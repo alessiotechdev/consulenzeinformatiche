@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="it" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Listino Prezzi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <style>
+    :root {
+    --bs-primary: #4da3ff;
+    --bs-primary-rgb: 77, 163, 255;
+    --bs-body-bg: #f8f9fa;
+    --bs-body-color: #212529;
+    --bs-card-bg: #ffffff;
+  }
+
+  [data-bs-theme="dark"] {
+    --bs-body-bg: #0d1117;
+    --bs-body-color: #e0e0e0;
+    --bs-primary: #0d47a1;
+    --bs-primary-rgb: 13, 71, 161;
+    --bs-secondary-bg: #161b22;
+    --bs-card-bg: #1c2128;
+  }
+
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      background-color: var(--bs-body-bg);
+      color: var(--bs-body-color);
+      display: flex;
+      flex-direction: column;
+    }
+
+    body > .content {
+      flex: 1 0 auto;
+      padding: 2rem 1rem;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h2.section-title {
+      font-weight: bold;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .responsive-table {
+      overflow-x: auto;
+      margin-top: 1rem;
+      border-radius: 8px;
+      border: 3px solid var(--bs-primary);
+      background-color: var(--bs-card-bg);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+      color: var(--bs-body-color);
+    }
+
+    thead tr {
+      background: var(--bs-primary);
+      color: white;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+      font-weight: bold;
+    }
+
+    tbody tr:hover {
+      background-color: rgba(0,0,0,0.05);
+      transition: background-color 0.3s ease;
+    }
+
+    .card {
+      margin-bottom: 1.5rem;
+    }
+
+    footer {
+      background-color: #000;
+      color: white;
+      text-align: center;
+      padding: 12px 1rem;
+      flex-shrink: 0;
+      font-size: 0.9rem;
+    }
+
+    nav.navbar {
+      background-color: var(--bs-primary);
+    }
+
+    .btn-contact {
+      display: block;
+      margin: 2rem auto 0;
+      max-width: 250px;
+    }
+
+    @media (max-width: 576px) {
+      th, td {
+        padding: 10px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-primary navbar-dark">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <i class="bi bi-house-door-fill me-2"></i> Home
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigazione">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Servizi</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="conoscenze.html">Conoscenze</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contatti.html">Contatti</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="prezzi.html">Prezzi</a>
+        </li>
+        <li class="nav-item d-lg-none">
+          <button id="toggle-theme-mobile" class="btn btn-link nav-link" type="button">
+            <i class="bi bi-moon"></i>
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <button id="toggle-theme" class="btn btn-link d-none d-lg-block text-white ms-3" type="button">
+      <i class="bi bi-moon"></i>
+    </button>
+  </div>
+</nav>
+
+  <main class="content">
+    <h2 class="section-title">Listino Prezzi</h2>
+
+    <div class="card shadow-sm border-primary">
+      <div class="card-header bg-primary text-white">
+        <h5 class="mb-0"><i class="bi bi-info-circle-fill me-2"></i>Informazioni utili prima di iniziare</h5>
+      </div>
+      <div class="card-body">
+        <p><strong>Il primo incontro per le ripetizioni è completamente gratuito</strong>: serve a valutare il livello di partenza, comprendere le esigenze specifiche e concordare insieme un percorso di lavoro.</p>
+        <p>Per quanto riguarda <strong>interventi tecnici o assistenza su dispositivi</strong>, effettuo una verifica preliminare del problema <strong>senza alcun costo</strong>. Una volta individuata la causa, informerò il cliente sul tipo di intervento necessario e sul <strong>costo previsto</strong>, chiedendo <strong>l’autorizzazione a procedere</strong>.</p>
+      </div>
+    </div>
+
+    <div class="responsive-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Tipo di lavoro</th>
+            <th>Tariffa indicativa</th>
+            <th>Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Assistenza tecnica base</td><td>15-25€/h</td><td><i class="bi bi-tools"></i></td></tr>
+          <tr><td>Ripetizioni (Inglese/Informatica) – 1 ora</td><td>15-30€/h</td><td>Disponibile online</td></tr>
+          <tr><td>Ripetizioni – Pacchetto 10 ore</td><td>130€</td><td>Lezioni flessibili</td></tr>
+          <tr><td>Sviluppo siti web base</td><td>300-800€</td><td>HTML/CSS/JS</td></tr>
+          <tr><td>Consulenza informatica</td><td>25-50€/h</td><td>Consigli personalizzati</td></tr>
+          <tr><td>Installazione software / OS</td><td>25-50€</td><td>Windows/Linux</td></tr>
+          <tr><td>Ottimizzazione PC</td><td>25-40€/h</td><td>Velocizzazione / pulizia</td></tr>
+          <tr><td>Recupero dati</td><td>Da 40€</td><td>Solo casi semplici</td></tr>
+          <tr><td>Realizzazione portfolio online</td><td>200-400€</td><td>Per studenti/freelance</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <a href="contatti.html" class="btn btn-primary btn-contact">
+      <i class="bi bi-envelope-fill me-2"></i> Contattami per info
+    </a>
+  </main>
+
+  <footer>
+    &copy; 2025 – Alessio
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const toggle = document.getElementById('toggle-theme');
+    toggle.addEventListener('click', () => {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-bs-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-bs-theme', newTheme);
+      toggle.innerHTML = newTheme === 'dark'
+        ? '<i class="bi bi-brightness-high"></i>'
+        : '<i class="bi bi-moon"></i>';
+    });
+  </script>
+</body>
+</html>
