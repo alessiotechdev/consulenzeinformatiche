@@ -3,10 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Consulente Informatico – Home</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <meta name="description" content="Ripetizioni e assistenza informatica personalizzate. Scopri di più." />
+  <meta name="keywords" content="ripetizioni, assistenza informatica, lezioni private, supporto pc" />
+  <meta name="author" content="Alessio Napoletano" />
+  <title>Homepage – Ripetizioni e Assistenza</title>
+  <link rel="icon" href="img/favicon.png" type="image/png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
   <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
     :root {
       --bs-primary: #4da3ff;
       --bs-primary-rgb: 77, 163, 255;
@@ -29,212 +40,176 @@
       color: var(--bs-body-color);
     }
 
-    .hero {
+    .page-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar-nav {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero-section {
+      text-align: center;
       padding: 60px 20px;
-      background: linear-gradient(135deg, var(--bs-primary), #6610f2);
-      color: white;
-      text-align: center;
     }
 
-    .btn-theme-toggle {
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: white;
-      cursor: pointer;
-    }
-
-    .section-title {
-      margin-bottom: 30px;
-      text-align: center;
+    .hero-section h1 {
+      font-size: 2.5rem;
       font-weight: bold;
     }
 
-    .card-icon {
-      font-size: 2rem;
-      color: var(--bs-primary);
+    .hero-buttons .btn {
+      margin: 15px;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
     }
 
-    .hover-card {
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .card-hover {
+      max-width: 300px;
+      flex: 1 1 auto;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-width: 3px;
     }
 
-    .hover-card:hover {
-      transform: translateY(-8px);
+    .card-hover:hover {
+      transform: translateY(-6px);
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-    }
-
-    .fade-in-card {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.8s ease forwards;
-    }
-
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .fade-hover:hover {
-      transform: scale(1.03);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    }
-
-    .card,
-    .bg-light {
-      background-color: var(--bs-card-bg) !important;
-      color: var(--bs-body-color);
-    }
-
-    .card-body {
-      padding: 1.5rem;
     }
 
     footer {
       background-color: #000000;
       color: white;
+      text-align: center;
+      padding: 1rem 0;
+    }
+
+    [data-bs-theme="dark"] footer {
+      background-color: #161b22;
+      color: #e0e0e0;
+    }
+
+    #theme-toggle-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1050;
+      padding: 0.7rem;
+      border: none;
+      border-radius: 50%;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    [data-bs-theme="light"] #theme-toggle-btn {
+      background-color: #000;
+      color: #fff;
+    }
+
+    [data-bs-theme="dark"] #theme-toggle-btn {
+      background-color: #fff;
+      color: #000;
+    }
+
+    @media (max-width: 576px) {
+      #theme-toggle-btn {
+        font-size: 1.6rem;
+        padding: 0.8rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">
-        <i class="bi bi-house-door-fill me-2"></i> Home
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigazione">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html">Servizi</a></li>
-          <li class="nav-item"><a class="nav-link" href="certificazioni.html">Certificazioni</a></li>
-          <li class="nav-item"><a class="nav-link" href="contatti.html">Contatti</a></li>
-          <li class="nav-item"><a class="nav-link" href="prezzi.html">Prezzi</a></li>
-        </ul>
-        <!-- Pulsante per il cambio tema -->
-        <button id="toggle-theme" class="btn-theme-toggle ms-3" title="Cambia tema">
-          <i class="bi bi-moon" id="theme-icon"></i>
+  <div class="page-wrapper">
+    <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
         </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="servizi.html">Servizi</a></li>
+            <li class="nav-item"><a class="nav-link" href="certificazioni.html">Certificazioni</a></li>
+            <li class="nav-item"><a class="nav-link" href="contatti.html">Contatti</a></li>
+            <li class="nav-item"><a class="nav-link" href="prezzi.html">Prezzi</a></li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container">
-      <h1 class="display-4 d-flex justify-content-center align-items-center gap-2">
-        <i class="bi bi-person-circle"></i>
-        <span>Alessio</span>
-      </h1>
-      <p class="lead">Studente Universitario</p>
-      <p class="lead">Consulente informatico freelance • Assistenza, sviluppo, ripetizioni</p>
-    </div>
-  </section>
+    <section class="hero-section">
+      <h1 class="mb-4">Benvenuto!</h1>
+      <div class="hero-buttons d-flex flex-column flex-md-row justify-content-center align-items-center">
+        <a href="contatti.html" class="btn btn-outline-secondary">Hai bisogno di contattarmi? Clicca qui</a>
+      </div>
+    </section>
 
-  <!-- Servizi -->
-  <section class="py-5">
-    <div class="container">
-      <h2 class="section-title">Servizi Offerti</h2>
-      <div class="row g-4 justify-content-center">
-        <div class="col-md-6 col-lg-3">
-          <div class="card text-center h-100 shadow-sm hover-card">
-            <div class="card-body">
-              <div class="card-icon mb-2"><i class="bi bi-tools"></i></div>
-              <h5 class="card-title">Assistenza tecnica</h5>
-              <p class="card-text">Configurazione PC, reti, sicurezza, backup.</p>
-            </div>
-          </div>
+    <div class="container card-container">
+      <div class="card card-hover border-success">
+        <div class="card-body">
+          <h5 class="card-title">Assistenza PC</h5>
+          <p class="card-text">Problemi col computer? Posso aiutarti!</p>
+          <a href="servizi.html#assistenza" class="btn btn-outline-success">Dettagli</a>
         </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="card text-center h-100 shadow-sm hover-card">
-            <div class="card-body">
-              <div class="card-icon mb-2"><i class="bi bi-laptop"></i></div>
-              <h5 class="card-title">Sviluppo Web</h5>
-              <p class="card-text">Realizzazione siti moderni e responsive per aziende e privati.</p>
-            </div>
-          </div>
+      </div>
+
+      <div class="card card-hover border-danger">
+        <div class="card-body">
+          <h5 class="card-title">Siti Web</h5>
+          <p class="card-text">Realizzo siti web e portfolio moderni e responsive.</p>
+          <a href="servizi.html#sviluppo" class="btn btn-outline-danger">Guarda i servizi</a>
         </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="card text-center h-100 shadow-sm hover-card">
-            <div class="card-body">
-              <div class="card-icon mb-2"><i class="bi bi-person-video3"></i></div>
-              <h5 class="card-title">Ripetizioni</h5>
-              <p class="card-text">Lezioni e supporto per studenti di ogni livello.</p>
-            </div>
-          </div>
+      </div>
+
+      <div class="card card-hover border-primary">
+        <div class="card-body">
+          <h5 class="card-title">Ripetizioni Informatica</h5>
+          <p class="card-text">Lezioni personalizzate per studenti di ogni livello.</p>
+          <a href="servizi.html#ripetizioni" class="btn btn-outline-primary">Scopri di più</a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Altre pagine -->
-  <section class="py-5 bg-light">
-    <div class="container">
-      <h2 class="section-title">Altre pagine</h2>
-      <div class="row g-4">
-        <div class="col-md-6">
-          <div class="card h-100 shadow-sm fade-in-card fade-hover" style="animation-delay: 0.2s;">
-            <div class="card-body d-flex">
-              <i class="bi bi-award card-icon me-3"></i>
-              <div>
-                <h5 class="card-title">Competenze e conoscenze</h5>
-                <p class="card-text">Qui puoi vedere le competenze acquisite e le tecnologie usate.</p>
-                <a href="conoscenze.html" class="btn btn-outline-primary btn-sm mt-2">Scopri di più</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card h-100 shadow-sm fade-in-card fade-hover" style="animation-delay: 0.4s;">
-            <div class="card-body d-flex">
-              <i class="bi bi-envelope card-icon me-3"></i>
-              <div>
-                <h5 class="card-title">Contatti</h5>
-                <p class="card-text">Vuoi contattarmi? Puoi farlo da qui.</p>
-                <a href="contatti.html" class="btn btn-outline-primary btn-sm mt-2">Clicca qui</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="text-white text-center py-3">
-    &copy; 2025 – Alessio
+  <footer>
+    &copy; 2025 – Alessio Napoletano
   </footer>
 
-  <!-- Script -->
+  <button id="theme-toggle-btn">
+    <i id="floating-theme-icon" class="bi"></i>
+  </button>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Applica tema salvato
+    const html = document.documentElement;
     const savedTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-bs-theme', savedTheme);
-    updateThemeIcon(savedTheme);
+    html.setAttribute('data-bs-theme', savedTheme);
 
-    // Cambio tema
-    document.getElementById('toggle-theme').addEventListener('click', () => {
-      const html = document.documentElement;
-      const currentTheme = html.getAttribute('data-bs-theme');
-      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    const updateIcons = () => {
+      const theme = html.getAttribute('data-bs-theme');
+      document.getElementById('floating-theme-icon').className = theme === 'dark' ? 'bi bi-sun' : 'bi bi-moon';
+    };
+
+    document.getElementById('theme-toggle-btn').addEventListener('click', () => {
+      const newTheme = html.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark';
       html.setAttribute('data-bs-theme', newTheme);
       localStorage.setItem('theme', newTheme);
-      updateThemeIcon(newTheme);
+      updateIcons();
     });
 
-    // Cambia icona del bottone
-    function updateThemeIcon(theme) {
-      const icon = document.getElementById('theme-icon');
-      icon.className = theme === 'dark' ? 'bi bi-sun' : 'bi bi-moon';
-    }
+    updateIcons();
   </script>
 </body>
 </html>
